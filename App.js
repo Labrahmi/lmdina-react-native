@@ -1,13 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, Text, Touchable, View } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
+import React from 'react'
+import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Button className="bg-slate-600" title="Press me" onPress={() => alert('Hello World')} />
-      {/* <Text className="bg-slate-900 p-2 text-white rounded-xl">Hello World</Text> */}
-      <StatusBar style="auto" />
-    </View>
+    <WelcomeScreen />
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
