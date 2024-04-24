@@ -1,22 +1,85 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
+import React, { useState } from 'react';
+import { Link, router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MapView from 'react-native-maps';
+import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { ScrollView, RefreshControl, Modal, Button } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';;
+import { EvilIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import KeyboardAvoidingComponent from './components/KeyboardAvoidingView';
 
-const chatbot = () => {
+export default function chatbot() {
+  
+  const [text, onChangeText] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>chatbot, Page</Text>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <View className="flex flex-row justify-between items-center w-full p-6">
+        <TouchableOpacity onPress={() => {
+          router.push('home');
+        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
+          <AntDesign name="arrowleft" size={24} color="black" />
+        </TouchableOpacity>
+        {/*  */}
+        <TouchableOpacity onPress={() => {
+          router.push('chatbot');
+        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
+          <MaterialCommunityIcons name="robot-outline" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{
+          padding: 24,
+          flex: 1,
+          justifyContent: 'flex-end',
+        }}>
+          <TextInput
+            returnKeyType={'send'}
+            onChangeText={onChangeText}
+            onSubmitEditing = {() => {
+              console.log(text);
+              onChangeText('');
+              Alert.alert('Message sent', text);
+            }}
+            value={text}
+            placeholder="Best place to swim nearby" style={styles.textInput} />
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   )
 }
-
-export default chatbot
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
+  },
+  textInput: {
+    height: 40,
+    borderColor: '#000000',
+    borderBottomWidth: 1,
+    marginBottom: 36,
+  },
+  btnContainer: {
+    backgroundColor: 'white',
+    marginTop: 12,
+  },
+});
 

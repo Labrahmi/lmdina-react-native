@@ -6,7 +6,6 @@ import MapView from 'react-native-maps';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { ScrollView, RefreshControl, Modal, Button } from 'react-native';
-import Chatbot from './components/chatbot';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';;
@@ -157,13 +156,13 @@ export default function home() {
     <View style={styles.container}>
       <View className="flex flex-row justify-between items-center w-full p-6">
         <TouchableOpacity onPress={() => {
-          router.replace('choose_interests');
+          router.push('choose_interests');
         }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
           <AntDesign name="arrowleft" size={24} color="black" />
         </TouchableOpacity>
         {/*  */}
         <TouchableOpacity onPress={() => {
-          router.replace('chatbot');
+          router.push('chatbot');
         }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
           <MaterialCommunityIcons name="robot-outline" size={24} color="black" />
         </TouchableOpacity>
