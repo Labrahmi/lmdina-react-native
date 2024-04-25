@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import MapView from 'react-native-maps';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { ScrollView, RefreshControl, Modal, Button } from 'react-native';
+import { ScrollView, RefreshControl, Modal, Button, Key } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';;
@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import KeyboardAvoidingComponent from './components/KeyboardAvoidingView';
 
 export default function chatbot() {
-  
+
   const [text, onChangeText] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);

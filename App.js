@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
 import React from 'react'
-import WelcomeScreen from './app/screens/home';
+import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
   return (

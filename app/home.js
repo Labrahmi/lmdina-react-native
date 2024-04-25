@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MapView from "react-native-maps";
@@ -19,6 +19,8 @@ import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import * as Location from "expo-location";
+import MapViewDirections from "react-native-maps-directions";
 
 const getData = async (key) => {
   try {
@@ -38,6 +40,8 @@ export default function home() {
 
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [state, setState] = useState(null);
+  const [location, setLocation] = useState(null);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -51,6 +55,181 @@ export default function home() {
       setRefreshing(false);
     }, 2000); // Simulate a 2-second delay
   };
+
+  const mapstyle = [
+    {
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#242f3e",
+        },
+      ],
+    },
+    {
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#746855",
+        },
+      ],
+    },
+    {
+      elementType: "labels.text.stroke",
+      stylers: [
+        {
+          color: "#242f3e",
+        },
+      ],
+    },
+    {
+      featureType: "administrative.locality",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
+    },
+    {
+      featureType: "poi",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#263c3f",
+        },
+      ],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#6b9a76",
+        },
+      ],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#38414e",
+        },
+      ],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry.stroke",
+      stylers: [
+        {
+          color: "#212a37",
+        },
+      ],
+    },
+    {
+      featureType: "road",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#9ca5b3",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#746855",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry.stroke",
+      stylers: [
+        {
+          color: "#1f2835",
+        },
+      ],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#f3d19c",
+        },
+      ],
+    },
+    {
+      featureType: "transit",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#2f3948",
+        },
+      ],
+    },
+    {
+      featureType: "transit.station",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#d59563",
+        },
+      ],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [
+        {
+          color: "#17263c",
+        },
+      ],
+    },
+    {
+      featureType: "water",
+      elementType: "labels.text.fill",
+      stylers: [
+        {
+          color: "#515c6d",
+        },
+      ],
+    },
+    {
+      featureType: "water",
+      elementType: "labels.text.stroke",
+      stylers: [
+        {
+          color: "#17263c",
+        },
+      ],
+    },
+  ];
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      const tmpstate = await Location.reverseGeocodeAsync(location.coords);
+      setState(tmpstate);
+      setLocation(location);
+    })();
+  }, []);
 
   let landmarks = [
     {
@@ -188,37 +367,68 @@ export default function home() {
           activeOpacity={0.6}
           className="flex flex-row items-center gap-2"
         >
-          <AntDesign name="arrowleft" size={24} color="black" />
+          <AntDesign name="arrowleft" size={30} color="#D7A366" />
         </TouchableOpacity>
         {/*  */}
-        <TouchableOpacity
-          onPress={() => {
-            router.replace("chatbot");
-          }}
-          activeOpacity={0.6}
-          className="flex flex-row items-center gap-2"
-        >
-          <MaterialCommunityIcons
-            name="robot-outline"
-            size={24}
-            color="black"
-          />
-        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => {
+          router.replace('chatbot');
+        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
+          <MaterialCommunityIcons name="robot-outline" size={24} color="black" />
+        </TouchableOpacity> */}
       </View>
+      <Text
+        className="mt-4 font-bold text-white  text-xl mb-4"
+        style={{ textAlign: "center" }}
+      >
+        Explore The Beauty Of The City
+      </Text>
+      <View className="w-full h-[30vh]  overflow-hidden rounded-xl border-2 border-[#D7A366]">
+        <MapView
+          initialRegion={{
+            latitude: location ? location.coords.latitude : 0.6,
+            longitude: location ? location.coords.longitude : -5.3,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
+          }}
+          region={{
+            latitude: location ? location.coords.latitude : 0.6,
+            longitude: location ? location.coords.longitude : -5.3,
+            latitudeDelta: 0.02,
+            longitudeDelta: 0.02,
+          }}
+          showsUserLocation
+          loadingEnabled
+          provider={MapView.PROVIDER_GOOGLE}
+          style={{
+            borderBlockColor: "white",
+            borderWidth: 4,
+          }}
+          className="w-full h-full"
+          customMapStyle={mapstyle}
+        >
+          {/* <MapViewDirections /> */}
+        </MapView>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          router.replace("chatbot");
+        }}
+        activeOpacity={0.6}
+        className="flex flex-row m-4"
+        style={{ alignContent: "center", justifyContent: "center" }}
+      >
+        <MaterialCommunityIcons
+          name="robot-outline"
+          size={30}
+          color="#D7A366"
+        />
+      </TouchableOpacity>
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         style={{ padding: 24 }}
       >
-        <Text className="mt-4 font-light text-xl">
-          • Explore the beauty of our city 🏄‍♂️
-        </Text>
-        <Text className="flex flex-row justify-center items-center w-full p-2">
-          <EvilIcons name="location" size={16} color="black" />
-          <Text className="">Tetouan</Text>
-        </Text>
-        <View className="my-4"></View>
         <View
           style={{
             flex: 1,
@@ -230,15 +440,18 @@ export default function home() {
         >
           {landmarks.map((landmark, key) => (
             <TouchableOpacity
+              onPress={() => {
+                router.replace("locationPage");
+              }}
               activeOpacity={0.6}
               key={key}
-              className="rounded-lg border border-zinc-200 flex flex-row items-center justify-between overflow-hidden"
+              className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"
             >
               <View className="flex flex-row items-start">
                 <Image
                   resizeMode="cover"
                   source={{ uri: landmark.image }}
-                  style={{ width: 150, height: 200, borderRadius: 0 }}
+                  style={{ width: 160, height: 147, borderRadius: 0 }}
                 />
                 <LinearGradient
                   colors={["transparent", "rgba(0,0,0,0.8)"]}
@@ -251,12 +464,7 @@ export default function home() {
                   }}
                 >
                   <View style={{ flex: 1, justifyContent: "flex-end" }}>
-                    <Text
-                      numberOfLines={1}
-                      className="text-white font-bold text-sm p-2"
-                    >
-                      {landmark.name}
-                    </Text>
+                    {/* <Text numberOfLines={1} className="text-white font-bold text-sm p-2">{landmark.name}</Text> */}
                   </View>
                 </LinearGradient>
               </View>
@@ -272,7 +480,7 @@ export default function home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#18302D",
     // alignItems: 'center',
     // justifyContent: 'center',
     // padding: 24,
