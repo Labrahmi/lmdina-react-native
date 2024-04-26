@@ -20,33 +20,36 @@ const storeData = async (key, value) => {
   }
 };
 
-export default function choose_interests() {
+export default function Choose_interests({ navigation }) {
   const [isPressed1, setIsPressed1] = useState(false);
   const [isPressed2, setIsPressed2] = useState(false);
   const [isPressed3, setIsPressed3] = useState(false);
   const handleLandmarkPress = async (e) => {
     console.log("Landmark pressed");
     await storeData("home_preference", "landmark");
-    router.replace("/home");
+    navigation.navigate("home");
   };
   const handleMountainPress = (e) => {
     console.log("Mountain pressed");
-    router.replace("/home");
+    navigation.navigate("home");
   };
   const handleBeachPress = (e) => {
     console.log("Beach pressed");
-    router.replace("/home");
+    navigation.navigate("home");
   };
   return (
-    <View style={{flex:1, backgroundColor: "#18302D"}}>
+    <View style={{ flex: 1, backgroundColor: "#18302D" }}>
       <TouchableOpacity
-        onPress={() => {
-          router.push("home");
-        }}
+        onPress={() => navigation.navigate("landing")}
         activeOpacity={0.6}
         className="flex flex-row items-center gap-2 m-4"
       >
-        <AntDesign name="arrowleft" size={30} color="#D7A366" style={{fontWeight:"bold"}} />
+        <AntDesign
+          name="arrowleft"
+          size={30}
+          color="#D7A366"
+          style={{ fontWeight: "bold" }}
+        />
       </TouchableOpacity>
       <View
         style={styles.container}
@@ -58,13 +61,15 @@ export default function choose_interests() {
         <View className="flex w-full p-4 gap-12">
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={handleLandmarkPress}
+            onPress={() => navigation.navigate("home")}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
               padding: 20,
               alignContent: "center",
               alignItems: "center",
+              borderColor: "#D7A366",
+              borderWidth: 3,
             }}
             onPressIn={() => {
               setIsPressed1(!isPressed1);
@@ -83,13 +88,15 @@ export default function choose_interests() {
           </TouchableHighlight>
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={handleMountainPress}
+            onPress={() => navigation.navigate("home")}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
               padding: 20,
               alignContent: "center",
               alignItems: "center",
+              borderColor: "#D7A366",
+              borderWidth: 3,
             }}
             onPressIn={() => {
               setIsPressed2(!isPressed2);
@@ -108,13 +115,15 @@ export default function choose_interests() {
           </TouchableHighlight>
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={handleBeachPress}
+            onPress={() => navigation.navigate("home")}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
               padding: 20,
               alignContent: "center",
               alignItems: "center",
+              borderColor: "#D7A366",
+              borderWidth: 3,
             }}
             onPressIn={() => {
               setIsPressed3(!isPressed3);

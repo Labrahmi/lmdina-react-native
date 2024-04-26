@@ -13,7 +13,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import KeyboardAvoidingComponent from './components/KeyboardAvoidingView';
 
-export default function chatbot() {
+export default function Chatbot({ navigation}) {
 
   const [text, onChangeText] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -33,16 +33,8 @@ export default function chatbot() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       <View className="flex flex-row justify-between items-center w-full p-6">
-        <TouchableOpacity onPress={() => {
-          router.push('home');
-        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
+        <TouchableOpacity onPress={() => navigation.navigate("home")} activeOpacity={0.6} className="flex flex-row items-center gap-2">
           <AntDesign name="arrowleft" size={24} color="black" />
-        </TouchableOpacity>
-        {/*  */}
-        <TouchableOpacity onPress={() => {
-          router.push('chatbot');
-        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
-          <MaterialCommunityIcons name="robot-outline" size={24} color="black" />
         </TouchableOpacity>
       </View>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

@@ -4,23 +4,37 @@ import {
   Text,
   View,
   TouchableOpacity,
+  TouchableHighlight,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState } from "react";
 import { Link, router } from "expo-router";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  createNativeStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/native-stack";
+import Home from "./home";
+import ChooseInterests from "./choose_interests";
+import Chatbot from "./chatbot";
+import Location from "./locationPage";
 
-export default function index() {
+function Landing({ navigation }) {
+  const [isPressed, setIsPressed] = useState(false);
+
   const handlePress = () => {
     console.log("WelcomeScreen");
+    router.replace("/choose_interests");
   };
   const [fontsLoaded, fontError] = useFonts({
     "AnticDidone-Regular": require("./assets/fonts/AnticDidone-Regular.ttf"),
   });
   return (
     <ImageBackground
-      onLoad={() => { {router.replace('/home')} }}
+      // onLoad={() => { {router.replace('/choose_interests')} }}
       style={styles.background}
       source={require("./assets/tetouan.jpg")}
       resizeMode="cover"
@@ -37,21 +51,20 @@ export default function index() {
           flex: 1,
           width: "100%",
           height: "100%",
-          justifyContent: "flex-end",
+          justifyContent: "space-around",
         }}
       >
         <View
           style={{
             flex: 1,
-            justifyContent: "center",
             alignItems: "center",
+            justifyContent: "center",
             padding: 12,
-            gap: 80,
+            marginTop: 80,
+            gap: 45,
           }}
         >
-          <Text style={{ color: "white", fontSize: 40, fontWeight: "900" }}>
-            TETOUAN
-          </Text>
+          <Image source={require("./assets/Tetouan_text.png")} />
           <Text
             style={{
               color: "white",
@@ -61,23 +74,75 @@ export default function index() {
               textAlign: "center",
             }}
           >
-            Where culture thrives in every corner
+            Where culture thrives{"\n"}in every corner
           </Text>
         </View>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          className="m-8 mb-24 rounded-lg overflow-hidden p-4 bg-[#D7A366]"
+        <TouchableHighlight
+          style={{
+            backgroundColor: "#D7A366",
+            borderRadius: 10,
+            padding: 20,
+            alignContent: "center",
+            alignItems: "center",
+            borderColor: "#D7A366",
+            borderWidth: 3,
+          }}
+          onPressIn={() => setIsPressed(!isPressed)}
+          onPressOut={() => setIsPressed(!isPressed)}
+          underlayColor={"#22403D"}
+          className="m-8 mb-24 rounded-lg overflow-hidden p-4"
+          onPress={() => navigation.navigate("choose_interests")}
         >
-          <Link
-            onPress={handlePress}
-            href="/choose_interests"
-            className="text-[#22403D] text-center font-bold text-xl"
+          <Text
+            style={{ color: isPressed ? "white" : "#22403D" }}
+            className="text-center font-bold text-xl"
           >
             Start The Experience
-          </Link>
-        </TouchableOpacity>
+          </Text>
+        </TouchableHighlight>
       </LinearGradient>
     </ImageBackground>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+export default function index() {
+  return (
+    <NavigationContainer independent={true}>
+      <Stack.Navigator
+        initialRouteName="landing"
+        screenOptions={{
+          animation: "slide_from_bottom", // Custom transition animation
+        }}
+      >
+        <Stack.Screen
+          name="landing"
+          options={{ headerShown: false }}
+          component={Landing}
+        />
+        <Stack.Screen
+          name="choose_interests"
+          options={{ headerShown: false }}
+          component={ChooseInterests}
+        />
+        <Stack.Screen
+          name="home"
+          options={{ headerShown: false }}
+          component={Home}
+        />
+        <Stack.Screen
+          name="location"
+          options={{ headerShown: false }}
+          component={Location}
+        />
+        <Stack.Screen
+          name="chatbot"
+          options={{ headerShown: false }}
+          component={Chatbot}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

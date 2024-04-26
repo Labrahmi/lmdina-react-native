@@ -13,7 +13,7 @@ import MapView from "react-native-maps";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { ScrollView, RefreshControl, Modal, Button } from "react-native";
-import Chatbot from "./components/chatbot";
+import Chatbot from "./components/tchatbot";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -33,7 +33,7 @@ const getData = async (key) => {
   }
 };
 
-export default function home() {
+export default function Home({navigation}) {
   // Location
   console.log("Location");
   //
@@ -361,9 +361,7 @@ export default function home() {
     <View style={styles.container}>
       <View className="flex flex-row justify-between items-center w-full p-6">
         <TouchableOpacity
-          onPress={() => {
-            router.replace("choose_interests");
-          }}
+          onPress={() => navigation.navigate("choose_interests")}
           activeOpacity={0.6}
           className="flex flex-row items-center gap-2"
         >
@@ -410,9 +408,7 @@ export default function home() {
         </MapView>
       </View>
       <TouchableOpacity
-        onPress={() => {
-          router.replace("chatbot");
-        }}
+        onPress={() => navigation.navigate("chatbot")}
         activeOpacity={0.6}
         className="flex flex-row m-4"
         style={{ alignContent: "center", justifyContent: "center" }}
@@ -440,9 +436,7 @@ export default function home() {
         >
           {landmarks.map((landmark, key) => (
             <TouchableOpacity
-              onPress={() => {
-                router.replace("locationPage");
-              }}
+              onPress={() => navigation.navigate("location")}
               activeOpacity={0.6}
               key={key}
               className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"

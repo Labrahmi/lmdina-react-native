@@ -3,14 +3,12 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 
-const locationPage = () => {
+export default function LocationPage({ navigation }) {
   return (
     <View style={styles.container}>
       <View className="flex flex-row justify-between items-center w-full p-6">
         <TouchableOpacity
-          onPress={() => {
-            router.replace("choose_interests");
-          }}
+          onPress={() => navigation.navigate("home")}
           activeOpacity={0.6}
           className="flex flex-row items-center gap-2"
         >
@@ -32,7 +30,7 @@ const locationPage = () => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -54,5 +52,3 @@ const styles = StyleSheet.create({
     padding: 12,
   },
 });
-
-export default locationPage;
