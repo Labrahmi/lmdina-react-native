@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   TouchableHighlight,
+  StatusBar
 } from "react-native";
 import React, { useState } from "react";
 import { Link, router } from "expo-router";
@@ -39,6 +40,10 @@ export default function Choose_interests({ navigation }) {
   };
   return (
     <View style={{ flex: 1, backgroundColor: "#18302D" }}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#18302D"
+        />
       <TouchableOpacity
         onPress={() => navigation.navigate("landing")}
         activeOpacity={0.6}

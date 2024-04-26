@@ -15,13 +15,18 @@ export default function LocationPage({ navigation }) {
           <AntDesign name="arrowleft" size={30} color="#D7A366" />
         </TouchableOpacity>
       </View>
-      <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-        <Text style={styles.text}>Tétouan Catholic Church</Text>
-        <Image
-          source={require("./assets/tetouan.jpg")}
-          className="rounded-2xl"
-          style={{ width: 250, height: 325, borderRadius: 0 }}
-        />
+      <View
+        style={{ alignItems: "center", flex: 1 }}
+        className="justify-center items-center w-full p-6 gap-4"
+      >
+          <Text style={styles.text}>Tétouan Catholic Church</Text>
+        {/* <View className=" gap-4"> */}
+          <Image
+            source={require("./assets/tetouan.jpg")}
+            className="rounded-2xl"
+            style={{ width: 250, height: 325, borderRadius: 0 }}
+          />
+        {/* </View> */}
         <Text style={styles.paragraph}>
           built during the Spanish protectorate in Morocco, and still active
           today, it is considered one of the best examples of the Spanish
@@ -41,7 +46,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 20,
     textAlign: "center",
   },
   paragraph: {

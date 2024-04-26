@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   Image,
+  StatusBar,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Link, router } from "expo-router";
@@ -359,6 +360,10 @@ export default function Home({navigation}) {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        animated={true}
+        backgroundColor="#18302D"
+        />
       <View className="flex flex-row justify-between items-center w-full p-6">
         <TouchableOpacity
           onPress={() => navigation.navigate("choose_interests")}
