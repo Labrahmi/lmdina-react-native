@@ -63,7 +63,7 @@ export default function Choose_interests({ navigation }) {
         <Text className="text-3xl text-white text-left font-bold">
           What do you like ?
         </Text>
-        <View className="flex w-full p-4 gap-12">
+        <View className="flex w-full p-4 gap-y-6">
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
             onPress={() => navigation.navigate("home")}

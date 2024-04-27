@@ -33,24 +33,20 @@ const getData = async (key) => {
     console.log("Error getting data");
   }
 };
-const googlekey = ""
-function getNearPlaces(userlocation,radius) {
-  fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&key=${googlekey}`)
-  .then(
-    res => res.json()
+const googlekey = process.env.GOOGLE_API_KEY;
+function getNearPlaces(userlocation, radius) {
+  fetch(
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&key=${googlekey}`
   )
-  .then(
-    data => {
-      console.log(data)
-      return data
-    }
-  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
 }
 
-export default function Home({navigation}) {
-  // Location
-  console.log("Location");
-  //
+export default function Home({ navigation }) {
+
 
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -239,10 +235,10 @@ export default function Home({navigation}) {
         return;
       }
       let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
       const tmpstate = await Location.reverseGeocodeAsync(location.coords);
       setState(tmpstate);
-      setLocation(location);
-      // getNearPlaces(location.coords,4000)
+      // getNearPlaces(location.coords,4000);
     })();
   }, []);
 
@@ -374,11 +370,8 @@ export default function Home({navigation}) {
 
   return (
     <View style={styles.container}>
-      <StatusBar
-        animated={true}
-        backgroundColor="#18302D"
-        />
-      <View className="flex flex-row justify-between items-center w-full p-6">
+      <StatusBar animated={true} backgroundColor="#18302D" />
+      <View className="flex flex-row justify-between items-center w-full">
         <TouchableOpacity
           onPress={() => navigation.navigate("choose_interests")}
           activeOpacity={0.6}
@@ -387,57 +380,56 @@ export default function Home({navigation}) {
           <AntDesign name="arrowleft" size={30} color="#D7A366" />
         </TouchableOpacity>
         {/*  */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate("chatbot")}
+          activeOpacity={0.6}
+          className="flex flex-row m-4"
+          style={{ alignContent: "center", justifyContent: "center" }}
+        >
+          <MaterialCommunityIcons
+            name="robot-outline"
+            size={30}
+            color="#D7A366"
+          />
+        </TouchableOpacity>
       </View>
       <Text
-        className="mt-4 font-bold text-white  text-xl mb-4"
+        className="font-bold text-white text-xl mb-4"
         style={{ textAlign: "center" }}
       >
         Explore The Beauty Of The City
       </Text>
-      <View className="w-full h-[30vh]  overflow-hidden rounded-xl border-2 border-[#D7A366]">
+      <View className="w-full h-[30vh] overflow-hidden rounded-xl border-2 border-[#D7A366]">
         <MapView
           initialRegion={{
-            latitude: location ? location.coords.latitude : 0.6,
-            longitude: location ? location.coords.longitude : -5.3,
+            // 35.5889° N, 5.3626° W
+            latitude: location ? location.coords.latitude : 35.5889,
+            longitude: location ? location.coords.longitude : -5.3626,
             latitudeDelta: 0.1,
             longitudeDelta: 0.1,
           }}
           region={{
-            latitude: location ? location.coords.latitude : 0.6,
-            longitude: location ? location.coords.longitude : -5.3,
-            latitudeDelta: 0.02,
-            longitudeDelta: 0.02,
+            latitude: location ? location.coords.latitude : 35.5889,
+            longitude: location ? location.coords.longitude : -5.3626,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
           }}
           showsUserLocation
           loadingEnabled
-          provider={MapView.PROVIDER_GOOGLE}
+          // provider={MapView.PROVIDER_GOOGLE}
           style={{
             borderBlockColor: "white",
-            borderWidth: 4,
           }}
-          className="w-full h-full"
+          className="w-full h-full scale-100"
           customMapStyle={mapstyle}
-        >
-          {/* <MapViewDirections /> */}
-        </MapView>
+        ></MapView>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("chatbot")}
-        activeOpacity={0.6}
-        className="flex flex-row m-4"
-        style={{ alignContent: "center", justifyContent: "center" }}
-      >
-        <MaterialCommunityIcons
-          name="robot-outline"
-          size={30}
-          color="#D7A366"
-        />
-      </TouchableOpacity>
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-        style={{ padding: 24 }}
+        // style={{ paddingTop: 16, paddingBottom: 16}}
+        className="rounded-lg overflow-hidden my-4"
       >
         <View
           style={{
@@ -459,10 +451,10 @@ export default function Home({navigation}) {
                 <Image
                   resizeMode="cover"
                   source={{ uri: landmark.image }}
-                  style={{ width: 160, height: 147, borderRadius: 0 }}
+                  style={{ width: "100%", height: 140, borderRadius: 0 }}
                 />
                 <LinearGradient
-                  colors={["transparent", "rgba(0,0,0,0.8)"]}
+                  colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
                   style={{
                     position: "absolute",
                     top: 0,
@@ -472,14 +464,14 @@ export default function Home({navigation}) {
                   }}
                 >
                   <View style={{ flex: 1, justifyContent: "flex-end" }}>
-                    {/* <Text numberOfLines={1} className="text-white font-bold text-sm p-2">{landmark.name}</Text> */}
+                    <Text numberOfLines={1} className="text-white font-bold text-sm p-2">{landmark.name}</Text>
                   </View>
                 </LinearGradient>
               </View>
             </TouchableOpacity>
           ))}
         </View>
-        <View className="my-6"></View>
+        <View className=""></View>
       </ScrollView>
     </View>
   );
@@ -489,6 +481,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#18302D",
+    padding: 16,
     // alignItems: 'center',
     // justifyContent: 'center',
     // padding: 24,

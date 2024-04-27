@@ -32,7 +32,7 @@ export default function index() {
         initialRouteName="landing"
         screenOptions={{
           animation: "slide_from_right", // Custom transition animation
-          presentation: "modal", // Modal presentation
+          presentation: "card", // Modal style
         }}
       >
         <Stack.Screen
