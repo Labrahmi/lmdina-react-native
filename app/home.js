@@ -33,7 +33,7 @@ const getData = async (key) => {
     console.log("Error getting data");
   }
 };
-const googlekey = "AIzaSyCYMZImVJe4xQzNX-BA0GVJQmAaVXEXKLY"
+const googlekey = ""
 function getNearPlaces(userlocation,radius) {
   fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&key=${googlekey}`)
   .then(
