@@ -65,7 +65,7 @@ export default function Landing({ navigation }) {
             style={{
               color: "white",
               fontFamily: "AnticDidone-Regular",
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: "500",
               textAlign: "center",
             }}
@@ -113,4 +113,3 @@ const styles = StyleSheet.create({
       // fontFamily:"AnticDidone-Regular"
     },
   });
-  

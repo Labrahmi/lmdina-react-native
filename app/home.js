@@ -33,6 +33,19 @@ const getData = async (key) => {
     console.log("Error getting data");
   }
 };
+const googlekey = "AIzaSyCYMZImVJe4xQzNX-BA0GVJQmAaVXEXKLY"
+function getNearPlaces(userlocation,radius) {
+  fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&key=${googlekey}`)
+  .then(
+    res => res.json()
+  )
+  .then(
+    data => {
+      console.log(data)
+      return data
+    }
+  )
+}
 
 export default function Home({navigation}) {
   // Location
@@ -229,6 +242,7 @@ export default function Home({navigation}) {
       const tmpstate = await Location.reverseGeocodeAsync(location.coords);
       setState(tmpstate);
       setLocation(location);
+      // getNearPlaces(location.coords,4000)
     })();
   }, []);
 
@@ -373,11 +387,6 @@ export default function Home({navigation}) {
           <AntDesign name="arrowleft" size={30} color="#D7A366" />
         </TouchableOpacity>
         {/*  */}
-        {/* <TouchableOpacity onPress={() => {
-          router.replace('chatbot');
-        }} activeOpacity={0.6} className="flex flex-row items-center gap-2">
-          <MaterialCommunityIcons name="robot-outline" size={24} color="black" />
-        </TouchableOpacity> */}
       </View>
       <Text
         className="mt-4 font-bold text-white  text-xl mb-4"
