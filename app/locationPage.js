@@ -4,27 +4,63 @@ import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Audio } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
+import * as FileSystem from "expo-file-system";
+import axios from "axios";
+import { byteLength, fromByteArray, toByteArray } from "base64-js";
+// import ReactNativeBlobUtil from "react-native-blob-util";
 
 export default function LocationPage({ navigation }) {
-  const [sound, setSound] = useState();
-  const playSound = async () => {
-    console.log("Loading Sound");
-    const { sound } = await Audio.Sound.createAsync({
-      uri: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    });
-    setSound(sound);
-    console.log("Playing Sound");
-    await sound.playAsync();
-  };
 
-  // Unload sound when component unmounts to prevent memory issues
-  useEffect(() => {
-    return () => {
-      if (sound) {
-        sound.unloadAsync();
-      }
+  const elevenlabs_key = process.env.ELEVENLABS_API_KEY;
+
+  async function fetchAudioFromElevenLabsAndReturnFilePath() {
+    const url =
+      "https://api.elevenlabs.io/v1/text-to-speech/PiOPV4oley9ECqk0WgaN";
+    const headers = {
+      "xi-api-key": elevenlabs_key,
+      "Content-Type": "application/json",
+      accept: "audio/mpeg",
     };
-  }, [sound]);
+    const data = {
+      text: "hello there", //should be dynamic and based on the location
+      model_id: "eleven_monolingual_v1",
+      voice_settings: {
+        stability: 0.5,
+        similarity_boost: 0.5,
+      },
+    };
+
+    const response = await axios.post(url, data, {
+      headers: headers,
+      responseType: "arraybuffer",
+    });
+    const filePath = FileSystem.documentDirectory + "output.mp3";
+    await FileSystem.writeAsStringAsync(
+      filePath,
+      fromByteArray(new Uint8Array(response.data)),
+      { encoding: FileSystem.EncodingType.Base64 }
+    );
+    return filePath;
+  }
+
+  const waitForDiJustFinishedPlaying = (sound) =>
+    new Promise((resolve) => {
+      sound.setOnPlaybackStatusUpdate((playbackStatus) => {
+        if (playbackStatus.didJustFinish) {
+          resolve(null);
+        }
+      });
+    });
+
+  async function playAudio() {
+    const path = await fetchAudioFromElevenLabsAndReturnFilePath();
+    try {
+      const { sound } = await Audio.Sound.createAsync({ uri: path });
+      await sound.playAsync();
+    } catch (error) {
+      console.error("Error creating audio:", error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -62,7 +98,7 @@ export default function LocationPage({ navigation }) {
               <Text numberOfLines={1} className="text-white font-light text-sm">
                 Play audio guide
               </Text>
-              <TouchableOpacity onPress={playSound} className="px-2">
+              <TouchableOpacity onPress={playAudio} className="px-2">
                 <AntDesign name="play" size={24} color="white" />
               </TouchableOpacity>
             </View>

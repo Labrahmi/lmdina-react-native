@@ -46,8 +46,6 @@ function getNearPlaces(userlocation, radius) {
 }
 
 export default function Home({ navigation }) {
-
-
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [state, setState] = useState(null);
@@ -401,13 +399,6 @@ export default function Home({ navigation }) {
       </Text>
       <View className="w-full h-[30vh] overflow-hidden rounded-xl border-2 border-[#D7A366]">
         <MapView
-          initialRegion={{
-            // 35.5889° N, 5.3626° W
-            latitude: location ? location.coords.latitude : 35.5889,
-            longitude: location ? location.coords.longitude : -5.3626,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1,
-          }}
           region={{
             latitude: location ? location.coords.latitude : 35.5889,
             longitude: location ? location.coords.longitude : -5.3626,
@@ -416,7 +407,7 @@ export default function Home({ navigation }) {
           }}
           showsUserLocation
           loadingEnabled
-          // provider={MapView.PROVIDER_GOOGLE}
+          provider={MapView.PROVIDER_GOOGLE}
           style={{
             borderBlockColor: "white",
           }}
@@ -464,7 +455,12 @@ export default function Home({ navigation }) {
                   }}
                 >
                   <View style={{ flex: 1, justifyContent: "flex-end" }}>
-                    <Text numberOfLines={1} className="text-white font-bold text-sm p-2">{landmark.name}</Text>
+                    <Text
+                      numberOfLines={1}
+                      className="text-white font-bold text-sm p-2"
+                    >
+                      {landmark.name}
+                    </Text>
                   </View>
                 </LinearGradient>
               </View>
