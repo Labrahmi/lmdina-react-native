@@ -1,0 +1,408 @@
+{
+    "html_attributions": [],
+    "next_page_token": "ATplDJbaJs2uawquYYOt5X3bQzVq6N2PFI1lnQpCKfdez8cU4QzLcOToRVAxH7mX_qKhxoBPKGDGiS8JoR6xA3ULNOGXfDaOPE9TGJSjc4mxWM4N2JAKnyRUEQpXApWfPVolgmwWlY17hwFCgnRphBlT-RN3gbvgLOgVuPz10sEdTnESL6uXawVnB7w-9nYh-Lu1JE8ehZR1-5yCeIw0YnfJ6vNWunXhtCAAkQPMHRkyXtATpiTYJCyCTEiLMSSls4-wT5Ti3zlz6zyiHQ2qu9Hm90yTGEDulYvIk8HfGxAKySMXPufxxEPQUazOcMLso8PTQUjMMUX1AvYG301uUK4cIb18pj-sbv0-Bx1PszDm0Sp7deGsVN3EPANLBFLTmriND16gl4lHK9mi_4huZQCJkRYHHyI2RW-YjtNWH2mgQgdZOCwiUSpme146iw8tWTnJExjsb5s",
+    "results": [
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "White Dove",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJY-seC3tCCw0RJduWuqy3Lh0",
+            "plus_code": [Object
+            ],
+            "rating": 4.4,
+            "reference": "ChIJY-seC3tCCw0RJduWuqy3Lh0",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1065,
+            "vicinity": "Avenue Tanger, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Grupo San Cristóbal",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJCxbdprlDCw0RKLAdEZ5DOdE",
+            "plus_code": [Object
+            ],
+            "reference": "ChIJCxbdprlDCw0RKLAdEZ5DOdE",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "vicinity": "Jaouhara, Av.Jaafar ben abi talib, Rue, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Ferma khalid elhassani",
+            "photos": [Array
+            ],
+            "place_id": "ChIJm91L6HRDCw0RtJTTNA09ZD0",
+            "rating": 5,
+            "reference": "ChIJm91L6HRDCw0RtJTTNA09ZD0",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 2,
+            "vicinity": "GJW6+VPXF, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "عين اغبالو",
+            "photos": [Array
+            ],
+            "place_id": "ChIJ6ZOWHSdDCw0RGhyMXeZkkuU",
+            "rating": 5,
+            "reference": "ChIJ6ZOWHSdDCw0RGhyMXeZkkuU",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "GJX8+RM3, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "الحفا الطبيرة",
+            "place_id": "ChIJ_SnUuuxDCw0RIC9uJf_3-50",
+            "reference": "ChIJ_SnUuuxDCw0RIC9uJf_3-50",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "vicinity": "GJW6+8PF, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Moulay El Mehdi yard",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJDVTFbGdCCw0RhG_xAmbKdSc",
+            "rating": 4.4,
+            "reference": "ChIJDVTFbGdCCw0RhG_xAmbKdSc",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 941,
+            "vicinity": "HJCG+37G, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Panorama Bouâanane",
+            "photos": [Array
+            ],
+            "place_id": "ChIJ1TFbf2JDCw0RIAqh72FFEkI",
+            "rating": 4,
+            "reference": "ChIJ1TFbf2JDCw0RIAqh72FFEkI",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "GJW9+G6W, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "عين بوكرامة",
+            "photos": [Array
+            ],
+            "place_id": "ChIJ359kwGBDCw0RCF4LH4Bw-4Y",
+            "rating": 4,
+            "reference": "ChIJ359kwGBDCw0RCF4LH4Bw-4Y",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1,
+            "vicinity": "GJV8+V75, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "منطقة بوعنان",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJGUL9GFtDCw0RFeVSVMGnc4c",
+            "plus_code": [Object
+            ],
+            "rating": 4.6,
+            "reference": "ChIJGUL9GFtDCw0RFeVSVMGnc4c",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 49,
+            "vicinity": "بوعنان, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Mountain View",
+            "photos": [Array
+            ],
+            "place_id": "ChIJr7-HNuJDCw0RQi2Xhlo63RQ",
+            "rating": 5,
+            "reference": "ChIJr7-HNuJDCw0RQi2Xhlo63RQ",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 3,
+            "vicinity": "HJ9H+865, Tetouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Place Feddan",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJPxAhq2BCCw0RbjE4ji-IB1M",
+            "plus_code": [Object
+            ],
+            "rating": 4.4,
+            "reference": "ChIJPxAhq2BCCw0RbjE4ji-IB1M",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 616,
+            "vicinity": "Avenue Alger, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Bab Tut",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJ832H711CCw0RhkzK-Fvh4oA",
+            "plus_code": [Object
+            ],
+            "rating": 4.4,
+            "reference": "ChIJ832H711CCw0RhkzK-Fvh4oA",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 813,
+            "vicinity": "شارع الجزائر, Avenue Alger, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Edificio La Unión y El Fénix",
+            "place_id": "ChIJ0TPCmpZDCw0R0Wsc3mcdZ4k",
+            "reference": "ChIJ0TPCmpZDCw0R0Wsc3mcdZ4k",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "vicinity": "HJ9H+XR6, Avenue Mohamed V, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/museum-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/museum_pinlet",
+            "name": "دار الشعر بتطوان",
+            "photos": [Array
+            ],
+            "place_id": "ChIJ1WXJtV1CCw0RdxInRK_W6U4",
+            "rating": 3.7,
+            "reference": "ChIJ1WXJtV1CCw0RdxInRK_W6U4",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 29,
+            "vicinity": "HJCH+6PQ, Tetouan"
+        },
+        {
+            "business_status": "CLOSED_TEMPORARILY",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Kasbah Tetouan",
+            "permanently_closed": true,
+            "photos": [Array
+            ],
+            "place_id": "ChIJLQRFNV5CCw0Re7pdIUywc2Q",
+            "plus_code": [Object
+            ],
+            "rating": 4.2,
+            "reference": "ChIJLQRFNV5CCw0Re7pdIUywc2Q",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 230,
+            "vicinity": "Avenue Abou Bakr Seddik, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "ساحة المشوار السعيد",
+            "place_id": "ChIJXUYA_2pDCw0RinFrynpdYvw",
+            "plus_code": [Object
+            ],
+            "rating": 3.3,
+            "reference": "ChIJXUYA_2pDCw0RinFrynpdYvw",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 3,
+            "vicinity": "3 Avenue Mohamed Ben Larbi Torres, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Michouar's Square",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJjWiwaVxCCw0RFIbuCf_0HZ4",
+            "plus_code": [Object
+            ],
+            "rating": 4.4,
+            "reference": "ChIJjWiwaVxCCw0RFIbuCf_0HZ4",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1801,
+            "vicinity": "3 Avenue Mohamed Ben Larbi Torres, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "Royal Palace",
+            "opening_hours": [Object
+            ],
+            "photos": [Array
+            ],
+            "place_id": "ChIJb26EdFxCCw0RLenWcmeKb-g",
+            "plus_code": [Object
+            ],
+            "rating": 4.4,
+            "reference": "ChIJb26EdFxCCw0RLenWcmeKb-g",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 1946,
+            "vicinity": "Place El Mechouar, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "باب الرواح",
+            "photos": [Array
+            ],
+            "place_id": "ChIJeVL5TB5DCw0RI1iRrNvGp1U",
+            "rating": 4.4,
+            "reference": "ChIJeVL5TB5DCw0RI1iRrNvGp1U",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 18,
+            "vicinity": "HJCJ+3MW, Avenue Mohamed Ben Larbi Torres, Tétouan"
+        },
+        {
+            "business_status": "OPERATIONAL",
+            "geometry": [Object
+            ],
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
+            "icon_background_color": "#13B5C7",
+            "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+            "name": "toreta",
+            "place_id": "ChIJsX8mR1ZDCw0R4SW0CZ7Xl4M",
+            "rating": 5,
+            "reference": "ChIJsX8mR1ZDCw0R4SW0CZ7Xl4M",
+            "scope": "GOOGLE",
+            "types": [Array
+            ],
+            "user_ratings_total": 2,
+            "vicinity": "HJ3J+49Q, Tetouan"
+        }
+    ],
+    "status": "OK"
+}

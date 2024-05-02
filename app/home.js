@@ -23,6 +23,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as Location from "expo-location";
 import MapViewDirections from "react-native-maps-directions";
 
+
 const getData = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
@@ -33,23 +34,26 @@ const getData = async (key) => {
     console.log("Error getting data");
   }
 };
-const googlekey = process.env.GOOGLE_API_KEY;
-function getNearPlaces(userlocation, radius) {
-  fetch(
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&key=${googlekey}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      return data;
-    });
-}
 
 export default function Home({ navigation }) {
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [state, setState] = useState(null);
   const [location, setLocation] = useState(null);
+  const [landmarks, setLandmarks] = useState(null);
+
+  const googlekey = process.env.GOOGLE_API_KEY;
+  const getNearPlaces = (userlocation, radius) => {
+    console.log(googlekey);
+    fetch(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userlocation.latitude},${userlocation.longitude}&radius=${radius}&type=restaurant&key=${googlekey}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results[0].geometry);
+        setLandmarks(data.results);
+      });
+  };
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -63,6 +67,7 @@ export default function Home({ navigation }) {
       setRefreshing(false);
     }, 2000); // Simulate a 2-second delay
   };
+
 
   const mapstyle = [
     {
@@ -236,128 +241,9 @@ export default function Home({ navigation }) {
       setLocation(location);
       const tmpstate = await Location.reverseGeocodeAsync(location.coords);
       setState(tmpstate);
-      // getNearPlaces(location.coords,4000);
+      getNearPlaces(location.coords, 400);
     })();
   }, []);
-
-  let landmarks = [
-    {
-      name: "Feddan Park",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image:
-        "https://scontent.fcmn1-4.fna.fbcdn.net/v/t1.6435-9/39748411_1175263262622741_3338696963599106048_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=U8sKsOM3SJAAb6yz4Xv&_nc_ht=scontent.fcmn1-4.fna&oh=00_AfCVUpxgemryWtFGI5JUb4d2iVV5Q77_CbkOeBe_TKF58g&oe=664F784C",
-    },
-    {
-      name: "Centro de Arte Moderno de Tetuan",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 3,
-      image:
-        "https://sergiobarce.files.wordpress.com/2013/11/centro-de-arte-moderno-de-tetuc3a1n-antigua-estacic3b3n.jpg",
-    },
-    {
-      name: "Tanneries of Tetouan",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 5,
-      image: "https://d3lq8p6p6r1qxf.cloudfront.net/1616448438120.jpg",
-    },
-    {
-      name: "Chamber of handicrafts",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 1,
-      image:
-        "https://sergiobarce.files.wordpress.com/2013/11/centro-de-arte-moderno-de-tetuc3a1n-antigua-estacic3b3n.jpg",
-    },
-    {
-      name: "Archeological Museum",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image: "https://d3lq8p6p6r1qxf.cloudfront.net/1616448438120.jpg",
-    },
-    {
-      name: "Dar El Oddi",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image:
-        "https://scontent.fcmn1-4.fna.fbcdn.net/v/t1.6435-9/39748411_1175263262622741_3338696963599106048_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=U8sKsOM3SJAAb6yz4Xv&_nc_ht=scontent.fcmn1-4.fna&oh=00_AfCVUpxgemryWtFGI5JUb4d2iVV5Q77_CbkOeBe_TKF58g&oe=664F784C",
-    },
-    {
-      name: "Feddan Park",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image:
-        "https://scontent.fcmn1-4.fna.fbcdn.net/v/t1.6435-9/39748411_1175263262622741_3338696963599106048_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=U8sKsOM3SJAAb6yz4Xv&_nc_ht=scontent.fcmn1-4.fna&oh=00_AfCVUpxgemryWtFGI5JUb4d2iVV5Q77_CbkOeBe_TKF58g&oe=664F784C",
-    },
-    {
-      name: "Centro de Arte Moderno de Tetuan",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 3,
-      image:
-        "https://sergiobarce.files.wordpress.com/2013/11/centro-de-arte-moderno-de-tetuc3a1n-antigua-estacic3b3n.jpg",
-    },
-    {
-      name: "Tanneries of Tetouan",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 5,
-      image: "https://d3lq8p6p6r1qxf.cloudfront.net/1616448438120.jpg",
-    },
-    {
-      name: "Chamber of handicrafts",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 1,
-      image:
-        "https://sergiobarce.files.wordpress.com/2013/11/centro-de-arte-moderno-de-tetuc3a1n-antigua-estacic3b3n.jpg",
-    },
-    {
-      name: "Archeological Museum",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image: "https://d3lq8p6p6r1qxf.cloudfront.net/1616448438120.jpg",
-    },
-    {
-      name: "Dar El Oddi",
-      description:
-        "The park is located in the heart of the city of Tetouan, and it is one of the most beautiful parks in the city, and it is characterized by its large area and its beautiful green spaces, and it is considered one of the most important tourist attractions in the city.",
-      latitude: 35.5831,
-      longitude: -5.3683,
-      rating: 4,
-      image:
-        "https://scontent.fcmn1-4.fna.fbcdn.net/v/t1.6435-9/39748411_1175263262622741_3338696963599106048_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=U8sKsOM3SJAAb6yz4Xv&_nc_ht=scontent.fcmn1-4.fna&oh=00_AfCVUpxgemryWtFGI5JUb4d2iVV5Q77_CbkOeBe_TKF58g&oe=664F784C",
-    },
-  ];
 
   // getData('home_preference');
 
@@ -416,57 +302,48 @@ export default function Home({ navigation }) {
         ></MapView>
       </View>
       <ScrollView
+        style={{ flex: 1,flexWrap:"wrap", flexDirection:"row"}}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         // style={{ paddingTop: 16, paddingBottom: 16}}
         className="rounded-lg overflow-hidden my-4"
       >
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: 10,
-          }}
-        >
-          {landmarks.map((landmark, key) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("location")}
-              activeOpacity={0.6}
-              key={key}
-              className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"
-            >
-              <View className="flex flex-row items-start">
-                <Image
-                  resizeMode="cover"
-                  source={{ uri: landmark.image }}
-                  style={{ width: "100%", height: 140, borderRadius: 0 }}
-                />
-                <LinearGradient
-                  colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    height: "100%",
-                    width: "100%",
-                  }}
-                >
-                  <View style={{ flex: 1, justifyContent: "flex-end" }}>
-                    <Text
-                      numberOfLines={1}
-                      className="text-white font-bold text-sm p-2"
-                    >
-                      {landmark.name}
-                    </Text>
-                  </View>
-                </LinearGradient>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
+          {landmarks &&
+            landmarks.map((landmark) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate("location")}
+                activeOpacity={0.6}
+                className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"
+              >
+                <View className="flex flex-row items-start">
+                  <Image
+                    resizeMode="cover"
+                    // source={{ uri: landmark.photos[0] }}
+                    style={{ width: "100%", height: 140, borderRadius: 0 }}
+                  />
+                  <LinearGradient
+                    colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      height: "100%",
+                      width: "100%",
+                    }}
+                  >
+                    <View style={{ flex: 1, justifyContent: "flex-end" }}>
+                      <Text
+                        numberOfLines={1}
+                        className="text-white font-bold text-sm p-2"
+                      >
+                        {landmark.name}
+                      </Text>
+                    </View>
+                  </LinearGradient>
+                </View>
+              </TouchableOpacity>
+            ))}
         <View className=""></View>
       </ScrollView>
     </View>
