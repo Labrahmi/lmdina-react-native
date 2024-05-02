@@ -11,7 +11,7 @@ import { byteLength, fromByteArray, toByteArray } from "base64-js";
 
 export default function LocationPage({ navigation }) {
 
-  const elevenlabs_key = process.env.ELEVENLABS_API_KEY;
+  const elevenlabs_key = "cc01be6c1d3b6665097489add1947e08"; // process.env.ELEVENLABS_API_KEY;
 
   async function fetchAudioFromElevenLabsAndReturnFilePath() {
     const url =
@@ -22,7 +22,7 @@ export default function LocationPage({ navigation }) {
       accept: "audio/mpeg",
     };
     const data = {
-      text: "hello there", //should be dynamic and based on the location
+      text: "Tétouan Catholic Church. Built during the Spanish protectorate in Morocco, and still active today, it is considered one of the best examples of the Spanish influence and heritage on Tétouan lorem ipsum dolor sit amet", //should be dynamic and based on the location
       model_id: "eleven_monolingual_v1",
       voice_settings: {
         stability: 0.5,

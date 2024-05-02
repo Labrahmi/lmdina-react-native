@@ -13,10 +13,12 @@ import { Link, router } from "expo-router";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
+
 import {
   createNativeStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/native-stack";
+
 import Home from "./home";
 import ChooseInterests from "./choose_interests";
 import Chatbot from "./chatbot";
