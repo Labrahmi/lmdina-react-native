@@ -30,6 +30,7 @@ const getData = async (key) => {
     if (value !== null) {
       console.log("value:", value);
     }
+
   } catch (e) {
     console.log("Error getting data");
   }
@@ -41,8 +42,9 @@ export default function Home({ navigation }) {
   const [state, setState] = useState(null);
   const [location, setLocation] = useState(null);
   const [landmarks, setLandmarks] = useState(null);
+  const [pdestination, setDestination] = useState(null);
 
-  const googlekey = process.env.GOOGLE_API_KEY;
+  const googlekey = "AIzaSyCYMZImVJe4xQzNX-BA0GVJQmAaVXEXKLY";
   const getNearPlaces = (userlocation, radius) => {
     console.log(googlekey);
     fetch(
@@ -50,8 +52,8 @@ export default function Home({ navigation }) {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results[0].geometry);
-        setLandmarks(data.results);
+        console.log(data.results);
+        setLandmarks(data.results)
       });
   };
 
@@ -252,6 +254,13 @@ export default function Home({ navigation }) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  const handeldes = (loc) => {
+    setDestination({
+      latitude: loc.lat,
+      longitude: loc.lng,
+    })
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar animated={true} backgroundColor="#18302D" />
@@ -299,51 +308,62 @@ export default function Home({ navigation }) {
           }}
           className="w-full h-full scale-100"
           customMapStyle={mapstyle}
-        ></MapView>
+        >
+          {pdestination &&
+            <MapViewDirections
+              origin={{
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }}
+              destination={pdestination}
+              apikey={googlekey}
+            />}
+        </MapView>
       </View>
       <ScrollView
-        style={{ flex: 1,flexWrap:"wrap", flexDirection:"row"}}
+        style={{ flex: 1, flexWrap: "wrap", flexDirection: "row" }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         // style={{ paddingTop: 16, paddingBottom: 16}}
         className="rounded-lg overflow-hidden my-4"
       >
-          {landmarks &&
-            landmarks.map((landmark) => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("location")}
-                activeOpacity={0.6}
-                className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"
-              >
-                <View className="flex flex-row items-start">
-                  <Image
-                    resizeMode="cover"
-                    // source={{ uri: landmark.photos[0] }}
-                    style={{ width: "100%", height: 140, borderRadius: 0 }}
-                  />
-                  <LinearGradient
-                    colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      height: "100%",
-                      width: "100%",
-                    }}
-                  >
-                    <View style={{ flex: 1, justifyContent: "flex-end" }}>
-                      <Text
-                        numberOfLines={1}
-                        className="text-white font-bold text-sm p-2"
-                      >
-                        {landmark.name}
-                      </Text>
-                    </View>
-                  </LinearGradient>
-                </View>
-              </TouchableOpacity>
-            ))}
+        {landmarks &&
+          landmarks.map((landmark) => (
+            <TouchableOpacity
+              id={landmark.place_id}
+              onPress={() => handeldes(landmark.geometry.location)}
+              activeOpacity={0.6}
+              className="rounded-lg border flex flex-row items-center justify-between overflow-hidden"
+            >
+              <View className="flex flex-row items-start">
+                <Image
+                  resizeMode="cover"
+                  // source={{ uri: landmark.photos[0] }}
+                  style={{ width: "100%", height: 140, borderRadius: 0 }}
+                />
+                <LinearGradient
+                  colors={["transparent", "rgba(0, 0, 0, 0.5)"]}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    height: "100%",
+                    width: "100%",
+                  }}
+                >
+                  <View style={{ flex: 1, justifyContent: "flex-end" }}>
+                    <Text
+                      numberOfLines={1}
+                      className="text-white font-bold text-sm p-2"
+                    >
+                      {landmark.name}
+                    </Text>
+                  </View>
+                </LinearGradient>
+              </View>
+            </TouchableOpacity>
+          ))}
         <View className=""></View>
       </ScrollView>
     </View>
