@@ -66,7 +66,7 @@ export default function Choose_interests({ navigation }) {
         <View className="flex w-full p-4 gap-y-6">
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={() => navigation.navigate("home")}
+            onPress={() => navigation.navigate("home", { preference: "tourist_attraction" })}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
@@ -93,7 +93,7 @@ export default function Choose_interests({ navigation }) {
           </TouchableHighlight>
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={() => navigation.navigate("home")}
+            onPress={() => navigation.navigate("home", { preference: "museum" })}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
@@ -115,12 +115,12 @@ export default function Choose_interests({ navigation }) {
               style={{ color: isPressed2 ? "white" : "#22403D" }}
               className="font-bold  text-[#22403D] text-2xl"
             >
-              Mountains
+              Museum
             </Text>
           </TouchableHighlight>
           {/* - - - - - - - - - - - - - - - */}
           <TouchableHighlight
-            onPress={() => navigation.navigate("home")}
+            onPress={() => navigation.navigate("home", { preference: "amusement_park" })}
             style={{
               backgroundColor: "#D7A366",
               borderRadius: 10,
@@ -142,7 +142,7 @@ export default function Choose_interests({ navigation }) {
               style={{ color: isPressed3 ? "white" : "#22403D" }}
               className="font-bold  text-[#22403D] text-2xl"
             >
-              Beach
+              Amusement Park
             </Text>
           </TouchableHighlight>
           {/* - - - - - - - - - - - - - - - */}

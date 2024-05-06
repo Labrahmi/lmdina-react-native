@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Image,
+  LogBox,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
@@ -24,10 +25,12 @@ import ChooseInterests from "./choose_interests";
 import Chatbot from "./chatbot";
 import Location from "./locationPage";
 import Landing from "./landing";
+import TripGen from "./tripGenerator";
 
 const Stack = createNativeStackNavigator();
 
 export default function index() {
+  LogBox.ignoreAllLogs();
   return (
     // <NavigationContainer independent={true}>
       <Stack.Navigator
@@ -56,6 +59,11 @@ export default function index() {
           name="location"
           options={{ headerShown: false }}
           component={Location}
+        />
+        <Stack.Screen
+          name="trip"
+          options={{ headerShown: false }}
+          component={TripGen}
         />
         <Stack.Screen
           name="chatbot"

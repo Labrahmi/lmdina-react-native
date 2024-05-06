@@ -104,11 +104,6 @@ export default function LocationPage({ navigation }) {
             </View>
           </LinearGradient>
         </View>
-        <Text className="" style={styles.paragraph}>
-          Built during the Spanish protectorate in Morocco, and still active
-          today, it is considered one of the best examples of the Spanish
-          influence and heritage on Tétouan lorem ipsum dolor sit amet
-        </Text>
       </View>
     </View>
   );

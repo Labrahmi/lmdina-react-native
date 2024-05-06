@@ -35,7 +35,7 @@ export default function Chatbot({ navigation }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer sk-proj-...`, // API IS NOT AVAILABLE for you hehehe
+          'Authorization': `Bearer sk-proj-MSM3uDcSR5DORPJlh7HbT3BlbkFJiwzD72CXiswxD9d2oOPb`, // API IS NOT AVAILABLE for you hehehe
         },
         body: JSON.stringify({
           messages: [{ role: 'user', content: 'Best beaches nearby' }], // [#FIX_ME#] prompt message should be dynamic and concatenated with user current location
@@ -62,7 +62,7 @@ export default function Chatbot({ navigation }) {
 
   return (
     <View className="flex flex-col gap-2 justify-between items-start w-full p-6 my-12">
-      <Text numberOfLines={1} className="font-semibold text-lg">Best beaches nearby</Text> {/* // [#FIX_ME#]  */}
+      {/* <TextclassName="font-semibold text-lg">Best beaches nearby</TextclassName=> // [#FIX_ME#]  */}
       <View className="bg-white border border-gray-200 p-4 rounded-xl w-full">
         <Text className="text-sm font-light whitespace-pre-wrap">
           {data ? data : "data not available"}

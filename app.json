@@ -4,12 +4,12 @@
     "slug": "myFirstApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/3244411-ai.png",
+    "icon": "./app/assets/image2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/splash-new.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./app/assets/op.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#18302D"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,8 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./app/assets/image2.png",
+        "backgroundColor": "#18302D"
       }
     },
     "scheme": "exponavigation",
